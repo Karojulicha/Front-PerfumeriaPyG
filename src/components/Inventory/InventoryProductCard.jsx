@@ -1,13 +1,12 @@
-import React from "react";
-import {
-  Box,
-  Image,
-  Text,
-  Button,
-  HStack,
-  RadioGroup,
-  Radio,
-} from "@chakra-ui/react";
+/**
+ * @license
+ * Copyright 2024 Perfumeria P&G
+ * Unauthorized copying of this file, via any medium is strictly prohibited
+ * Proprietary and confidential
+ */
+
+import { Box, Image, Text, Button, HStack } from "@chakra-ui/react";
+import { Radio, RadioGroup } from "@mui/material";
 
 export const InventoryProductCard = ({ product }) => {
   return (
@@ -38,5 +37,3 @@ export const InventoryProductCard = ({ product }) => {
     </Box>
   );
 };
-
-

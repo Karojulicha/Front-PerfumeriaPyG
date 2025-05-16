@@ -1,7 +1,6 @@
 import {
   Box,
   Button,
-  Divider,
   Flex,
   Grid,
   Image,
@@ -77,7 +76,6 @@ export const ShoppingCart = () => {
           />
         ))}
       </Box>
-      <Divider />
       <Text fontSize="lg" fontWeight="bold" color="black" textAlign="end">
         Subtotal del carrito: {"123.000"}
       </Text>

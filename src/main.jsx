@@ -1,16 +1,16 @@
-import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import "./index.css";
-import { ChakraProvider } from "@chakra-ui/react";
-import App from "./App";
+import React from "react";
 import { BrowserRouter, Route } from "react-router";
+import App from "./App";
+import "./index.css";
+import { Provider } from "./components/ui/provider";
 
 createRoot(document.getElementById("root")).render(
-  <ChakraProvider>
-    <StrictMode>
+  <React.StrictMode>
+    <Provider>
       <BrowserRouter>
         <App />
       </BrowserRouter>
-    </StrictMode>
-  </ChakraProvider>
+    </Provider>
+  </React.StrictMode>
 );

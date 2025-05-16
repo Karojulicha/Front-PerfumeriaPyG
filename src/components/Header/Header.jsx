@@ -5,7 +5,6 @@
  * Proprietary and confidential
  */
 
-// src/components/Header.js
 import React from "react";
 import "./header.css";
 import { CardHeader, Flex } from "@chakra-ui/react";

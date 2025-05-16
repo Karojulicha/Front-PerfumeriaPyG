@@ -3,7 +3,6 @@ import {
   Box,
   Flex,
   Input,
-  Select,
   Button,
   Text,
   Grid,
@@ -12,6 +11,7 @@ import {
 } from "@chakra-ui/react";
 import { InventoryProductCard } from "../components/Inventory/InventoryProductCard";
 import ProductFormModal from "../components/Inventory/ProductFormModal";
+import { Select } from "@mui/material";
 
 
 const InventoryPage = () => {
@@ -82,12 +82,12 @@ const InventoryPage = () => {
               <InventoryProductCard key={product.id} product={product} />
             ))}
           </Grid>
-          <ProductFormModal
+          {/* <ProductFormModal
             isOpen={"isOpen"}
             onClose={"onClose"}
             onSave={handleSaveProduct}
             product={products}
-          />
+          /> */}
         </Box>
       </Flex>
     </Box>

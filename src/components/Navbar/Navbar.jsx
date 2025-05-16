@@ -4,8 +4,8 @@
  * Unauthorized copying of this file, via any medium is strictly prohibited
  * Proprietary and confidential
  */
-import { Box, Button, Flex, Grid, Image, MenuButton } from "@chakra-ui/react";
-import React, { useState } from "react";
+import { Button, Flex, Image } from "@chakra-ui/react";
+import { useState } from "react";
 import { InventoryDropdown } from "./InventoryDropdown";
 import { ShoppingCart } from "./ShoppingCart";
 import "./css/Navbar.css";

@@ -8,7 +8,6 @@
 import {
   Box,
   Button,
-  Divider,
   Flex,
   Grid,
   Image,
@@ -57,7 +56,6 @@ const ProductsCard = ({
           Añadir al carrito
         </Button>
       </Box>
-      <Divider orientation="vertical"  />
     </Grid>
   );
 };
