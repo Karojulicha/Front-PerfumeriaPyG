@@ -13,7 +13,6 @@ export const InventoryProductCard = ({ product }) => {
     <Box
       borderWidth="1px"
       borderRadius="lg"
-      overflow="hidden"
       p={4}
       boxShadow="sm"
     >
@@ -26,12 +25,12 @@ export const InventoryProductCard = ({ product }) => {
         <HStack spacing={4}>
           {product.sizes.map((size) => (
             <Radio key={size} value={size}>
-              {size}
+              <Text>{size}</Text>
             </Radio>
           ))}
         </HStack>
       </RadioGroup>
-      <Button colorScheme="teal" width="full">
+      <Button color="teal" width="full">
         Agregar otro tamaño
       </Button>
     </Box>

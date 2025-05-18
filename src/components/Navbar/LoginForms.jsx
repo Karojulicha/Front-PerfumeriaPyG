@@ -32,14 +32,19 @@ export const LoginForm = ({ setIsRegistering }) => {
 
   return (
     <Grid
+      p="4"
+      borderWidth="1px"
+      borderRadius="lg"
       background="white"
-      p="3"
+      flexDirection="column"
       position="fixed"
-      borderRadius="2%"
-      zIndex="1"
-      mt="30%"
-      ml="48%"
-      transform="translate(150%, -10%)"
+      top="12"
+      right="0"
+      width={{ base: "90%", md: "400px" }}
+      overflowY="auto"
+      zIndex="modal"
+      boxShadow="xl"
+      gap="4"
     >
       <Heading as="h2" size="md" textAlign="center">
         Iniciar Sesión en perfumería P&G
@@ -54,15 +59,15 @@ export const LoginForm = ({ setIsRegistering }) => {
             <FormLabel textAlign="center">Contraseña</FormLabel>
             <Input type="password" placeholder="********" />
           </FormControl>
-          <Button type="submit" colorScheme="gray" width="full">
+          <Button type="submit" color="gray" width="full">
             Iniciar Sesión
           </Button>
-          <Button type="submit" colorScheme="gray" width="full">
+          <Button type="submit" color="gray" width="full">
             Iniciar Sesión con Google
           </Button>
           <Button
             onClick={() => setIsRegistering(true)} // Cambiar a formulario de registro
-            colorScheme="teal"
+            color="teal"
             width="full"
           >
             Crear cuenta nueva
@@ -80,15 +85,19 @@ export const RegisterForm = () => {
 
   return (
     <Grid
-      mt="30%"
-      p="6"
+      p="4"
       borderWidth="1px"
       borderRadius="lg"
       background="white"
+      flexDirection="column"
       position="fixed"
+      top="12"
+      right="0"
+      width={{ base: "90%", md: "400px" }}
+      overflowY="auto"
+      zIndex="modal"
+      boxShadow="xl"
       gap="4"
-      ml="50%"
-      transform="translate(70%, 12%)"
     >
       <Heading as="h2" size="lg">
         Regístrate en perfumería P&G
@@ -124,7 +133,7 @@ export const RegisterForm = () => {
             <Input type="password" placeholder="crear contraseña" />
           </FormControl>
 
-          <Button type="submit" colorScheme="teal" width="full">
+          <Button type="submit" color="teal" width="full">
             Registrarse
           </Button>
         </Stack>

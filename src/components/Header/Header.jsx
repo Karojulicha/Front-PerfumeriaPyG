@@ -5,10 +5,7 @@
  * Proprietary and confidential
  */
 
-import React from "react";
 import "./header.css";
-import { CardHeader, Flex } from "@chakra-ui/react";
-import { IoSearchSharp } from "react-icons/io5";
 
 const Header = ({ cart }) => {
   const totalItems = Object.values(cart).reduce(

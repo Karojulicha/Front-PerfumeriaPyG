@@ -1,4 +1,10 @@
-import React from "react";
+/**
+ * @license
+ * Copyright 2024 Perfumeria P&G
+ * Unauthorized copying of this file, via any medium is strictly prohibited
+ * Proprietary and confidential
+ */
+
 import {
   Box,
   Flex,
@@ -13,83 +19,86 @@ import { InventoryProductCard } from "../components/Inventory/InventoryProductCa
 import ProductFormModal from "../components/Inventory/ProductFormModal";
 import { Select } from "@mui/material";
 
-
 const InventoryPage = () => {
   const products = [
     {
       id: 1,
-      name: "212 VIP Black",
-      image: "/images/212-vip-black.png",
+      name: "Dulce gabanna",
+      image: "../../img/producto_1.jpg",
       sizes: ["50ml", "100ml", "250ml"],
     },
     {
       id: 2,
-      name: "212 Men Aqua",
-      image: "/images/212-men-aqua.png",
+      name: "Dulce gabanna",
+      image: "../../img/producto_2.jpg",
       sizes: ["50ml", "100ml", "250ml"],
     },
     {
       id: 3,
-      name: "212 VIP Men",
-      image: "/images/212-vip-men.png",
+      name: "Dulce gabanna",
+      image: "../../img/producto_3.jpg",
       sizes: ["50ml", "100ml", "250ml"],
     },
   ];
 
   const handleSaveProduct = () => {
     console.log("Product saved");
-  }
+  };
 
   return (
-    <Box p={100}>
-      {/* Barra de búsqueda */}
-      <Input placeholder="Buscar..." mb={25} />
+    <Box pt={100}>
+      <Grid direction={{ base: "column", md: "row" }} gap={8} p={10}>
+        {/* Barra de búsqueda */}
+        <Input placeholder="Buscar..." mb={20} />
+        <Flex direction={{ base: "column", md: "row" }}>
+          {/* Sección de Filtros */}
+          <VStack align="start" w={{ base: "100%", md: "20%" }} spacing={4}>
+            <Heading size="md">Filtro</Heading>
+            <Box>
+              <Text fontWeight="bold">Categoría:</Text>
+              <Select placeholder="Selecciona una categoría">
+                <option value="perfume">Perfume</option>
+                <option value="cologne">Colonia</option>
+              </Select>
+            </Box>
+            <Box>
+              <Text fontWeight="bold">Marca:</Text>
+              <Select placeholder="Selecciona una marca" w="full">
+                <option value="carolina-herrera">Carolina Herrera</option>
+                <option value="dior">Dior</option>
+              </Select>
+            </Box>
+            <Box>
+              <Text fontWeight="bold">Cantidad:</Text>
+              <Select placeholder="Selecciona orden" w="full">
+                <option value="asc">Menor a mayor</option>
+                <option value="desc">Mayor a menor</option>
+              </Select>
+            </Box>
+            <Button color="blue">Aplicar filtros</Button>
+          </VStack>
 
-      <Flex direction={{ base: "column", md: "row" }} gap={8}>
-        {/* Sección de Filtros */}
-        <VStack align="start" w={{ base: "100%", md: "25%" }} spacing={4}>
-          <Heading size="md">Filtro</Heading>
-          <Box>
-            <Text fontWeight="bold">Categoría:</Text>
-            <Select placeholder="Selecciona una categoría">
-              <option value="perfume">Perfume</option>
-              <option value="cologne">Colonia</option>
-            </Select>
-          </Box>
-          <Box>
-            <Text fontWeight="bold">Marca:</Text>
-            <Select placeholder="Selecciona una marca">
-              <option value="carolina-herrera">Carolina Herrera</option>
-              <option value="dior">Dior</option>
-            </Select>
-          </Box>
-          <Box>
-            <Text fontWeight="bold">Cantidad:</Text>
-            <Select placeholder="Selecciona orden">
-              <option value="asc">Menor a mayor</option>
-              <option value="desc">Mayor a menor</option>
-            </Select>
-          </Box>
-          <Button colorScheme="blue">Aplicar filtros</Button>
-        </VStack>
-
-        <Box flex="1">
-          <Heading size="lg" mb={4}>
-            Carolina Herrera
-          </Heading>
-          <Grid templateColumns={{ base: "1fr", md: "repeat(3, 1fr)" }} gap={6}>
-            {products.map((product) => (
-              <InventoryProductCard key={product.id} product={product} />
-            ))}
-          </Grid>
-          {/* <ProductFormModal
+          <Box flex="1">
+            <Heading size="lg" mb={4}>
+              Carolina Herrera
+            </Heading>
+            <Grid
+              templateColumns={{ base: "1fr", md: "repeat(3, 1fr)" }}
+              gap={6}
+            >
+              {products.map((product) => (
+                <InventoryProductCard key={product.id} product={product} />
+              ))}
+            </Grid>
+            {/* <ProductFormModal
             isOpen={"isOpen"}
             onClose={"onClose"}
             onSave={handleSaveProduct}
             product={products}
-          /> */}
-        </Box>
-      </Flex>
+            /> */}
+          </Box>
+        </Flex>
+      </Grid>
     </Box>
   );
 };

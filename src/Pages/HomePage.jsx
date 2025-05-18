@@ -1,7 +1,12 @@
-import { Footer } from "../components/Footer/Footer";
+/**
+ * @license
+ * Copyright 2024 Perfumeria P&G
+ * Unauthorized copying of this file, via any medium is strictly prohibited
+ * Proprietary and confidential
+ */
+
 import Header from "../components/Header/Header";
-import { Navbar } from "../components/Navbar/Navbar";
-import ProductsCardList from "../components/Products/productsCardList";
+import ProductsCardList from "../components/Products/ProductsCardList";
 
 export const HomePage = () => {
   const products = {

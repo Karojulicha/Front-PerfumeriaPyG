@@ -4,7 +4,7 @@
  * Unauthorized copying of this file, via any medium is strictly prohibited
  * Proprietary and confidential
  */
-import { Button, Flex, Image } from "@chakra-ui/react";
+import { Button, Flex, Image, useDisclosure } from "@chakra-ui/react";
 import { useState } from "react";
 import { InventoryDropdown } from "./InventoryDropdown";
 import { ShoppingCart } from "./ShoppingCart";
@@ -15,6 +15,7 @@ import { Link } from "react-router";
 
 export const Navbar = () => {
   const [activeCard, setActiveCard] = useState(null);
+
 
   const toggleCard = (card) => {
     setActiveCard(activeCard === card ? null : card);
@@ -34,10 +35,7 @@ export const Navbar = () => {
       </Link>
 
       <Flex>
-        <Button
-          background="white"
-          size="lg"
-        >
+        <Button background="white" size="lg">
           <Link to="/inventory">
             <img
               className="navbar__button_img"
@@ -71,7 +69,7 @@ export const Navbar = () => {
         </Button>
       </Flex>
       {activeCard === "profile" && <LoginForms />}
-      {activeCard === "shopping" && <ShoppingCart />}
+      {activeCard === "shopping" && <ShoppingCart onClose={toggleCard} />}
       {activeCard === "Inventory" && <InventoryDropdown />}
     </Flex>
   );

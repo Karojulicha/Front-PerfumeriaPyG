@@ -11,10 +11,8 @@ import {
   Flex,
   Grid,
   Image,
-  SmallCloseIcon,
   Text,
 } from "@chakra-ui/icons";
-import React from "react";
 import { IoCartOutline } from "react-icons/io5";
 
 const ProductsCard = ({
@@ -24,20 +22,23 @@ const ProductsCard = ({
   widthImg,
   heightImg,
 }) => {
+
+  const price = 123000;
+  const discount = 30;
+  const percentagePrice = price * (discount / 100); 
+  const priceWithOffert = price - percentagePrice;
   return (
-    <Grid w="30%" h="30%">
-      <Box margin="2">
+    <Grid>
+      <Flex justifyContent={"center"}>
         <Image
           width={widthImg}
           height={heightImg}
           className="cart__product_img"
-          src={
-            "https://sp.victoriassecret.com/p/380x507/tif/62/09/620970966f984559b80ea0c21f658445/111893792457_OF_F.jpg"
-          }
+          src={"../../../img/fragancia_2.jpg"}
           alt=""
         />
-      </Box>
-      <Box margin="2">
+      </Flex>
+      <Box>
         <Text fontSize="md" fontWeight="bold">
           {"Susurros de Noche"} {"100"}ml
         </Text>
@@ -49,9 +50,12 @@ const ProductsCard = ({
           </Text>
         )}
 
-        <Text fontSize="md">Precio {"123.000"}</Text>
+        <Text fontSize="lg">Precio: ${priceWithOffert}</Text>
+        <Text fontSize="md" textDecoration="line-through">
+          ${price}
+        </Text>
 
-        <Button gap="3" margin="2">
+        <Button gap="3" margin="2" color={"gray.900"}>
           <IoCartOutline />
           Añadir al carrito
         </Button>

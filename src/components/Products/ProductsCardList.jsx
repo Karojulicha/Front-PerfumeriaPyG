@@ -15,13 +15,8 @@ const ProductsCardList = ({ products, addToCart }) => {
       <Heading as="h3" size="lg" fontFamily="fantasy">
         Perfumes recientes
       </Heading>
-      <Grid
-        templateColumns="repeat(3, 1fr)"
-        width="full"
-        height="400px"
-        overflowX="auto"
-      >
-        <ProductsCard />
+      <Grid templateColumns="repeat(3, 1fr)" alignItems={""}>
+        <ProductsCard/>
         <ProductsCard />
         <ProductsCard />
       </Grid>
