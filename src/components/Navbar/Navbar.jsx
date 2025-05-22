@@ -10,8 +10,8 @@ import { InventoryDropdown } from "./InventoryDropdown";
 import { ShoppingCart } from "./ShoppingCart";
 import "./css/Navbar.css";
 import { SideMenu } from "./SideMenu";
-import { LoginForms } from "./LoginForms";
 import { Link } from "react-router";
+import { LoginPage } from "../../Pages/LoginPage";
 
 export const Navbar = () => {
   const [activeCard, setActiveCard] = useState(null);
@@ -68,7 +68,7 @@ export const Navbar = () => {
           ></img>
         </Button>
       </Flex>
-      {activeCard === "profile" && <LoginForms />}
+      {activeCard === "profile" && <LoginPage />}
       {activeCard === "shopping" && <ShoppingCart onClose={toggleCard} />}
       {activeCard === "Inventory" && <InventoryDropdown />}
     </Flex>

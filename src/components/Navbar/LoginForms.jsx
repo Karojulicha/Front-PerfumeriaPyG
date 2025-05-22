@@ -5,31 +5,26 @@
  * Proprietary and confidential
  */
 
-import {
-  Button,
-  Grid,
-  Heading,
-  Input,
-  Stack,
-} from "@chakra-ui/react";
+import { Button, Grid, Heading, Input, Stack } from "@chakra-ui/react";
 import { FormControl, FormLabel } from "@mui/material";
-import { useState } from "react"; 
+import { useState } from "react";
 
-export const LoginForms = () => {
-  const [isRegistering, setIsRegistering] = useState(true);
+export const LoginForms = ({handleLogin, setPassword, setEmail}) => {
+  const [isRegistering, setIsRegistering] = useState(false);
 
   return isRegistering ? (
     <RegisterForm />
   ) : (
-    <LoginForm setIsRegistering={setIsRegistering} />
+    <LoginForm
+      setIsRegistering={setIsRegistering}
+      handleLogin={handleLogin}
+      setPassword={setPassword}
+      setEmail={setEmail}
+    />
   );
 };
 
-export const LoginForm = ({ setIsRegistering }) => {
-  const handleSubmit = () => {
-    console.log("Form submitted");
-  };
-
+export const LoginForm = ({ setIsRegistering, handleLogin, setPassword, setEmail }) => {
   return (
     <Grid
       p="4"
@@ -46,18 +41,26 @@ export const LoginForm = ({ setIsRegistering }) => {
       boxShadow="xl"
       gap="4"
     >
-      <Heading as="h2" size="md" textAlign="center">
+      <Heading as="h2" size="md" textalign="center">
         Iniciar Sesión en perfumería P&G
       </Heading>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleLogin}>
         <Stack spacing={4}>
           <FormControl id="email" isRequired>
-            <FormLabel textAlign="center">Correo Electrónico</FormLabel>
-            <Input type="email" placeholder="tu-email@example.com" />
+            <FormLabel textalign="center">Correo Electrónico</FormLabel>
+            <Input
+              type="email"
+              placeholder="tu-email@example.com"
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </FormControl>
           <FormControl id="password" isRequired>
-            <FormLabel textAlign="center">Contraseña</FormLabel>
-            <Input type="password" placeholder="********" />
+            <FormLabel textalign="center">Contraseña</FormLabel>
+            <Input
+              type="password"
+              placeholder="********"
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </FormControl>
           <Button type="submit" color="gray" width="full">
             Iniciar Sesión
@@ -105,31 +108,31 @@ export const RegisterForm = () => {
       <form onSubmit={handleSubmit}>
         <Stack spacing={4}>
           <FormControl isRequired>
-            <FormLabel textAlign="center" htmlFor="nombre">
+            <FormLabel textalign="center" htmlFor="nombre">
               Nombre
             </FormLabel>
             <Input type="text" placeholder="Ingresa tu nombre" />
           </FormControl>
 
           <FormControl id="email" isRequired>
-            <FormLabel textAlign="center" htmlFor="Correo">
+            <FormLabel textalign="center" htmlFor="Correo">
               Correo Electrónico
             </FormLabel>
             <Input type="email" placeholder="tu-email@example.com" />
           </FormControl>
 
           <FormControl id="telefonico" isRequired>
-            <FormLabel textAlign="center">Número Telefónico</FormLabel>
+            <FormLabel textalign="center">Número Telefónico</FormLabel>
             <Input type="tel" placeholder="+00 000-0000-000" />
           </FormControl>
 
           <FormControl id="password" isRequired>
-            <FormLabel textAlign="center">Crear Contraseña</FormLabel>
+            <FormLabel textalign="center">Crear Contraseña</FormLabel>
             <Input type="password" placeholder="crear contraseña" />
           </FormControl>
 
           <FormControl id="password" isRequired>
-            <FormLabel textAlign="center">Confirmar Contraseña</FormLabel>
+            <FormLabel textalign="center">Confirmar Contraseña</FormLabel>
             <Input type="password" placeholder="crear contraseña" />
           </FormControl>
 
@@ -141,4 +144,3 @@ export const RegisterForm = () => {
     </Grid>
   );
 };
- 
