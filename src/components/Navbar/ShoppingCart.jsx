@@ -13,7 +13,7 @@ import { useState } from "react";
 import { BsTrash } from "react-icons/bs";
 import { MdOutlineClose } from "react-icons/md";
 
-export const ShoppingCart = ({ onClose }) => {
+export const ShoppingCart = ({ handleCard }) => {
   const [cart, setCart] = useState({
     1: { id: 1, name: "Susurros de Noche", amount: 1 },
     2: { id: 2, name: "la vida es bella", amount: 2 },
@@ -73,7 +73,11 @@ export const ShoppingCart = ({ onClose }) => {
         >
           Carrito de compras
         </Text>
-        <Button color="red.400" size="sm" >
+        <Button
+          color="red.400"
+          size="sm"
+          onClick={() => handleCard("shopping")}
+        >
           <MdOutlineClose />
         </Button>
       </Flex>
@@ -90,7 +94,7 @@ export const ShoppingCart = ({ onClose }) => {
       <Text fontSize="lg" fontWeight="bold" color="black" textAlign="end">
         Subtotal del carrito: {}
       </Text>
-      <Button color="teal"  width="full">
+      <Button color="teal" width="full">
         Finalizar compra
       </Button>
     </Flex>

@@ -5,11 +5,12 @@
  * Proprietary and confidential
  */
 
-import { Button, Grid, Heading, Input, Stack } from "@chakra-ui/react";
+import { Button, Flex, Grid, Heading, Input, Stack } from "@chakra-ui/react";
 import { FormControl, FormLabel } from "@mui/material";
 import { useState } from "react";
+import { MdOutlineClose } from "react-icons/md";
 
-export const LoginForms = ({handleLogin, setPassword, setEmail}) => {
+export const LoginForms = ({ handleCard, setPassword, setEmail, handleLogin }) => {
   const [isRegistering, setIsRegistering] = useState(false);
 
   return isRegistering ? (
@@ -17,14 +18,21 @@ export const LoginForms = ({handleLogin, setPassword, setEmail}) => {
   ) : (
     <LoginForm
       setIsRegistering={setIsRegistering}
-      handleLogin={handleLogin}
+      handleCard={handleCard}
       setPassword={setPassword}
       setEmail={setEmail}
+      handleLogin={handleLogin}
     />
   );
 };
 
-export const LoginForm = ({ setIsRegistering, handleLogin, setPassword, setEmail }) => {
+export const LoginForm = ({
+  setIsRegistering,
+  handleLogin,
+  setPassword,
+  setEmail,
+  handleCard,
+}) => {
   return (
     <Grid
       p="4"
@@ -41,9 +49,14 @@ export const LoginForm = ({ setIsRegistering, handleLogin, setPassword, setEmail
       boxShadow="xl"
       gap="4"
     >
-      <Heading as="h2" size="md" textalign="center">
-        Iniciar Sesión en perfumería P&G
-      </Heading>
+      <Flex justifyContent={"space-between"}>
+        <Heading as="h2" size="md" textalign="center">
+          Iniciar Sesión en perfumería P&G
+        </Heading>
+        <Button color="red.400" size="sm" onClick={() => handleCard("Login")}>
+          <MdOutlineClose />
+        </Button>
+      </Flex>
       <form onSubmit={handleLogin}>
         <Stack spacing={4}>
           <FormControl id="email" isRequired>
@@ -65,9 +78,9 @@ export const LoginForm = ({ setIsRegistering, handleLogin, setPassword, setEmail
           <Button type="submit" color="gray" width="full">
             Iniciar Sesión
           </Button>
-          <Button type="submit" color="gray" width="full">
+          {/* <Button type="submit" color="gray" width="full">
             Iniciar Sesión con Google
-          </Button>
+          </Button> */}
           <Button
             onClick={() => setIsRegistering(true)} // Cambiar a formulario de registro
             color="teal"

@@ -12,12 +12,14 @@ import "./css/Navbar.css";
 import { SideMenu } from "./SideMenu";
 import { Link } from "react-router";
 import { LoginPage } from "../../Pages/LoginPage";
+import { ProfilePage } from "../../Pages/ProfilePage";
 
 export const Navbar = () => {
   const [activeCard, setActiveCard] = useState(null);
 
 
   const toggleCard = (card) => {
+    console.log(card)
     setActiveCard(activeCard === card ? null : card);
   };
 
@@ -59,7 +61,7 @@ export const Navbar = () => {
         <Button
           background="white"
           size="lg"
-          onClick={() => toggleCard("profile")}
+          onClick={() => toggleCard("Login")}
         >
           <img
             className="navbar__button_img"
@@ -68,9 +70,10 @@ export const Navbar = () => {
           ></img>
         </Button>
       </Flex>
-      {activeCard === "profile" && <LoginPage />}
-      {activeCard === "shopping" && <ShoppingCart onClose={toggleCard} />}
+      {activeCard === "Login" && <LoginPage handleCard={toggleCard} />}
+      {activeCard === "shopping" && <ShoppingCart handleCard={toggleCard} />}
       {activeCard === "Inventory" && <InventoryDropdown />}
+      {activeCard === "profile" && <ProfilePage handleCard={toggleCard} />}
     </Flex>
   );
 };
