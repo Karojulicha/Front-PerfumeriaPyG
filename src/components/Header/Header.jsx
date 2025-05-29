@@ -5,13 +5,33 @@
  * Proprietary and confidential
  */
 
+import { Box } from "@chakra-ui/react";
 import "./header.css";
+import { useEffect, useMemo, useState } from "react";
 
-const Header = ({ cart }) => {
-  const totalItems = Object.values(cart).reduce(
-    (acc, item) => acc + item.amount,
-    0
-  );
+const Header = ({}) => {
+  const [query, setQuery] = useState("");
+  const [products, setProducts] = useState([]);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get("https://localhost:7075/api/perfume");
+        setProducts(response.data);
+      } catch (err) {
+        setError("Error al cargar perfumes");
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+  const filteredProducts = useMemo(() => {
+    return products.filter((product) =>
+      product.name.toLowerCase().includes(query.toLowerCase())
+    );
+  }, [products, query]);
 
   return (
     <div className="main__header">
@@ -28,10 +48,20 @@ const Header = ({ cart }) => {
       </div>
       <div>
         <input
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
           className="main__header_input"
           type="text"
           placeholder="Busca tu fragancia"
-        ></input>
+        />
+        {error && <p style={{ color: "red" }}>{error}</p>}
+        <Box>
+          <ul>
+            {filteredProducts.map((product) => {
+              <il key={product.id}>product.name</il>;
+            })}
+          </ul>
+        </Box>
       </div>
     </div>
   );

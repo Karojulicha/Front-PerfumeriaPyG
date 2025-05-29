@@ -9,7 +9,6 @@ import { Button, Toaster } from "@chakra-ui/react";
 import { LoginForms } from "../components/Navbar/LoginForms";
 import { useState } from "react";
 import axios from "axios";
-import { ProfilePage } from "./ProfilePage";
 
 export const LoginPage = ({ handleCard }) => {
   const [email, setEmail] = useState("");
@@ -34,7 +33,7 @@ export const LoginPage = ({ handleCard }) => {
       setError("");
       handleCard("Profile");
     } catch (err) {
-      console.log(err.message);
+      console.log("aqui se entra lo que quiero de error", err.message);
       setError(err.message);
     }
   };
@@ -47,7 +46,7 @@ export const LoginPage = ({ handleCard }) => {
         setEmail={setEmail}
         handleCard={()=> handleCard()}
       />
-      {/* <ProfilePage/> */}
+    
 
       {error && (
         <Button

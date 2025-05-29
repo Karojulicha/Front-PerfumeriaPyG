@@ -6,13 +6,13 @@
  */
 import { Button, Flex, Image, useDisclosure } from "@chakra-ui/react";
 import { useState } from "react";
-import { InventoryDropdown } from "./InventoryDropdown";
+
 import { ShoppingCart } from "./ShoppingCart";
 import "./css/Navbar.css";
 import { SideMenu } from "./SideMenu";
 import { Link } from "react-router";
 import { LoginPage } from "../../Pages/LoginPage";
-import { ProfilePage } from "../../Pages/ProfilePage";
+import { CardProfile } from "../Profile/CardProfile";
 
 export const Navbar = () => {
   const [activeCard, setActiveCard] = useState(null);
@@ -22,6 +22,18 @@ export const Navbar = () => {
     console.log(card)
     setActiveCard(activeCard === card ? null : card);
   };
+
+  const handleCardProfile = () => {
+
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      toggleCard("Profile")
+    }else {
+      toggleCard("Login")
+    }
+
+  }
 
   return (
     <Flex className="navbar">
@@ -61,7 +73,7 @@ export const Navbar = () => {
         <Button
           background="white"
           size="lg"
-          onClick={() => toggleCard("Login")}
+          onClick={() => handleCardProfile()}
         >
           <img
             className="navbar__button_img"
@@ -72,8 +84,7 @@ export const Navbar = () => {
       </Flex>
       {activeCard === "Login" && <LoginPage handleCard={toggleCard} />}
       {activeCard === "shopping" && <ShoppingCart handleCard={toggleCard} />}
-      {activeCard === "Inventory" && <InventoryDropdown />}
-      {activeCard === "profile" && <ProfilePage handleCard={toggleCard} />}
+      {activeCard === "Profile" && <CardProfile handleCard={toggleCard} />}
     </Flex>
   );
 };

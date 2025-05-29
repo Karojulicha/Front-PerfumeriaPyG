@@ -1,5 +1,14 @@
-import { Avatar, AvatarGroup, Button, Flex, Grid, Link } from "@chakra-ui/react";
+import {
+  Avatar,
+  AvatarGroup,
+  Button,
+  Flex,
+  Grid,
+  Link,
+  Text,
+} from "@chakra-ui/react";
 import { FcMenu } from "react-icons/fc";
+import { MdOutlineClose } from "react-icons/md";
 
 /**
  * @license
@@ -8,7 +17,13 @@ import { FcMenu } from "react-icons/fc";
  * Proprietary and confidential
  */
 
-export const CardProfile = (handleCard) => {
+export const CardProfile = ({ handleCard }) => {
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+
+    handleCard("Login");
+  };
+
   const styleButtonMenu = { backgroundColor: "gray.400", color: "white" };
   return (
     <Grid
@@ -26,20 +41,29 @@ export const CardProfile = (handleCard) => {
       boxShadow="xl"
       gap="4"
     >
-      <Flex justifyContent="center" mb={4}>
+      <Button
+        color="red.400"
+        size="sm"
+        justifySelf={"end"}
+        onClick={() => handleCard("Profile")}
+      >
+        <MdOutlineClose />
+      </Button>
+      <Grid justifyContent="center" gap={5}>
+        <Text> Hola {"Karol"}</Text>
         <AvatarGroup>
           <Avatar.Root size={"2xl"}>
             <Avatar.Fallback name="User new" />
-            <Avatar.Image src="https://bit.ly/sage-adebayo" />
+            <Avatar.Image src="" />
           </Avatar.Root>
         </AvatarGroup>
-      </Flex>
-
-      <Grid className="sideMenu">
-        <Link>Mis compras</Link>
-        <Link>Información personal</Link>
       </Grid>
-      <Button color={"red.400"}>Cerrar sesión</Button>
+      <Link justifyContent="center">Mis compras</Link>
+      <Link justifyContent="center">Información personal</Link>
+
+      <Button color={"red.400"} onClick={handleLogout}>
+        Cerrar sesión
+      </Button>
     </Grid>
   );
 };
